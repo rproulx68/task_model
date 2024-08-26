@@ -1,0 +1,15 @@
+pyproject.toml
+setup.py
+src/task_model/__init__.py
+src/task_model.egg-info/PKG-INFO
+src/task_model.egg-info/SOURCES.txt
+src/task_model.egg-info/dependency_links.txt
+src/task_model.egg-info/requires.txt
+src/task_model.egg-info/top_level.txt
+src/task_model/core/__init__.py
+src/task_model/core/base_task.py
+src/task_model/core/composite_task.py
+src/task_model/core/parameter.py
+src/task_model/core/task_result.py
+tests/test_task_model.py
+tests/test_task_model_extend.py
