@@ -5,6 +5,7 @@ new_venv/
 
 # Exclure init_git.py
 init_git.py
+task_model.egg-info/
 
 # Fichiers temporaires de Python
 *.pyc
