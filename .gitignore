@@ -3,6 +3,9 @@
 venv/
 new_venv/
 
+# Exclure init_git.py
+init_git.py
+
 # Fichiers temporaires de Python
 *.pyc
 __pycache__/
