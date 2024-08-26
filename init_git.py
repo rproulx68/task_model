@@ -1,36 +1,41 @@
 import os
 import subprocess
 
-def run_command(command):
-    """Helper function to run shell commands."""
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
-    if result.returncode != 0:
-        print(f"Error: {result.stderr}")
-    else:
-        print(result.stdout)
+# Contenu du fichier .gitignore
+gitignore_content = """
+# Environnements virtuels
+venv/
+new_venv/
 
-def init_git_repo(repo_name, github_username):
-    # Initialiser un nouveau dépôt Git localement
-    run_command('git init')
-    
-    # Ajouter tous les fichiers du projet
-    run_command('git add .')
+# Fichiers temporaires de Python
+*.pyc
+__pycache__/
 
-    # Faire un premier commit
-    run_command('git commit -m "Initial commit"')
+# Caches de tests et outils de vérification
+.mypy_cache/
+.pytest_cache/
 
-    # Ajouter le dépôt GitHub en tant que remote
-    remote_url = f"https://github.com/{github_username}/{repo_name}.git"
-    run_command(f'git remote add origin {remote_url}')
+# Configurations locales
+.env
+.vscode/
 
-    # Pousser les changements sur GitHub
-    run_command('git branch -M main')
-    run_command('git push -u origin main')
+# Fichiers journaux
+*.log
+"""
 
-if __name__ == "__main__":
-    # Nom du dépôt et du compte GitHub
-    repo_name = "task_model"
-    github_username = input("Entre ton nom d'utilisateur GitHub: ")
+# Crée ou écrase le fichier .gitignore
+with open(".gitignore", "w") as f:
+    f.write(gitignore_content)
 
-    # Initialiser le dépôt Git
-    init_git_repo(repo_name, github_username)
+# Exécute la commande Git pour supprimer les fichiers déjà suivis mais qui devraient être ignorés
+# sans les supprimer physiquement du disque
+subprocess.run(["git", "rm", "-r", "--cached", "."])
+
+# Ajouter de nouveau tous les fichiers (ceux qui ne sont pas ignorés)
+subprocess.run(["git", "add", "."])
+
+# Faire un commit propre
+subprocess.run(["git", "commit", "-m", "Clean repo by removing unnecessary files"])
+
+# Pousser les changements vers le dépôt distant
+subprocess.run(["git", "push"])

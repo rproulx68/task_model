@@ -1,0 +1,19 @@
+
+# Environnements virtuels
+venv/
+new_venv/
+
+# Fichiers temporaires de Python
+*.pyc
+__pycache__/
+
+# Caches de tests et outils de vérification
+.mypy_cache/
+.pytest_cache/
+
+# Configurations locales
+.env
+.vscode/
+
+# Fichiers journaux
+*.log
